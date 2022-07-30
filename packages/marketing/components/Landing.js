@@ -63,6 +63,34 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+const throttleFn = ()=> {
+  let prevT = 0
+  let count = 0
+  console.log('init', count)
+  return function() {
+    let curT = new Date().getTime()
+    let diffT = curT - prevT;
+    if (diffT > 2000) {
+      prevT = curT
+      count++
+      console.log('hello', count)
+    }
+  }
+}
+const debounceFn = ()=> {
+  console.log('init debounce')
+  let count = 0
+  let timer;
+  return function(event) {
+    if(timer) {
+      clearTimeout(timer)
+    } 
+    timer = setTimeout(()=> {
+      count++
+      console.log('hello de', event.target.value)
+    }, 1000)
+  }
+}
 export default function Album() {
   const classes = useStyles();
 
@@ -71,6 +99,10 @@ export default function Album() {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
+          <div>
+            <button onClick={throttleFn()}>Throttle</button>
+            <input type='text' onChange={debounceFn()}/>
+          </div>
           <Container maxWidth="sm">
             <Typography
               component="h1"
