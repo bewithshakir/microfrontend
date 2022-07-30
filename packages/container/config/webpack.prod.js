@@ -9,6 +9,7 @@ const prodConfig = {
   mode: 'production',
   output: {
     filename: '[name].[contenthash].js',
+    publicPath: 'container/latest/' // prepend them like. container/lagest/main.098.js
   },
   plugins: [
     new ModuleFederationPlugin({
