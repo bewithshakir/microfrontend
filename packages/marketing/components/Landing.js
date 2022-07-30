@@ -99,10 +99,10 @@ export default function Album() {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <div>
+          {/* <div>
             <button onClick={throttleFn()}>Throttle</button>
             <input type='text' onChange={debounceFn()}/>
-          </div>
+          </div> */}
           <Container maxWidth="sm">
             <Typography
               component="h1"
